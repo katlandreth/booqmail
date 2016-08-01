@@ -28,7 +28,6 @@ function handleAuthClick() {
 }
 
 function handleAuthResult(authResult) {
-  console.log(authResult);
   if(authResult && !authResult.error) {
     loadGmailApi();
     $('#authorize-button').hide();
@@ -53,30 +52,61 @@ function displayInbox() {
     'labelIds': 'INBOX',
     'maxResults': 10
   });
+  request.execute(buildMessages);
+ }
 
-  request.execute(function(response) {
-    $.each(response.messages, function() {
-      var messageRequest = gapi.client.gmail.users.messages.get({
-        'userId': 'me',
-        'id': this.id
-      });
 
-      messageRequest.execute(appendMessageRow);
+
+function buildMessages(messageList) {
+  var counter = messageList.messages.length;
+  $.each(messageList.messages, function() {
+    var messageRequest = gapi.client.gmail.users.messages.get({
+      'userId': 'me',
+      'id': this.id
+    }).then(function(res){
+      appendMessageRow(res.result);
+      counter -= 1;
+      if(counter == 0){
+        sortMessages();
+      }
     });
   });
 }
 
-//Display the messages in the INBOX
-
-function appendMessageRow(message) {
-  $('.table-inbox tbody').append(
-    '<tr>\
-      <td>'+getHeader(message.payload.headers, 'From')+'</td>\
-      <td>'+getHeader(message.payload.headers, 'Subject')+'</td>\
-      <td>'+getHeader(message.payload.headers, 'Date')+'</td>\
-    </tr>'
-  );
+function sortMessages() {
+  $('tr.email_item').each(function() {
+    var t = this.cells[2].textContent;
+    var prettyDateTime = convertDate(t);
+    $(this).data('date', t);
+    this.cells[2].textContent = prettyDateTime;
+  }).sort(function (a, b) {
+      return $(b).data('date') - $(a).data('date') ;
+  }).appendTo('tbody');
 }
+
+function convertDate(timestamp){
+  var date = new Date(+timestamp);
+  var monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"];
+  var prettyDate = monthNames[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
+  var prettyTime = formatTime(date);
+  return prettyDate + " at " + prettyTime;
+};
+
+function formatTime(dateObject){
+  var hour = dateObject.getHours();
+  var minute = dateObject.getMinutes();
+  var amPM = (hour > 11) ? "pm" : "am";
+  if(hour > 12) {
+    hour -= 12;
+  } else if(hour == 0) {
+    hour = "12";
+  }
+  if(minute < 10) {
+    minute = "0" + minute;
+  }
+  return hour + ":" + minute + amPM;
+};
 
 function getHeader(headers, index) {
   var header = '';
@@ -122,7 +152,6 @@ function getHTMLPart(arr) {
 
 function getAttachments(message, callback, element) {
   var parts = message.payload.parts;
-  var attachments = [];
   for (var i = 0; i < parts.length; i++) {
     var part = parts[i];
     if (part.filename && part.filename.length > 0) {
@@ -133,9 +162,7 @@ function getAttachments(message, callback, element) {
         'userId': 'me'
       });
       request.execute(function(attachment) {
-        // console.log("Attachment: " + attachment + " File Name: " + part.filename + " MimeType: " + part.mimeType);
         callback(part.filename, part.mimeType, attachment, element);
-        attachments.push(attachment.data);
       });
     }
   };
@@ -144,13 +171,13 @@ function getAttachments(message, callback, element) {
 function makeImage(filename, mimetype, attachment, modal) {
   var decodedData = attachment.data.replace(/-/g, '+').replace(/_/g, '/').replace(/\s/g, '');
   var decodedImage = window.atob(decodedData);
-  modal.find('#attachments').html("<img src='data:"+ mimetype +";base64,"+decodedData+"'/>");
+  modal.find('#attachments').html("<hr><h3>attachment:</h3><img src='data:"+ mimetype +";base64,"+decodedData+"'/>");
 }
 
 
 function appendMessageRow(message) {
   $('.table-inbox tbody').append(
-    '<tr>\
+    '<tr class="email_item">\
       <td>'+getHeader(message.payload.headers, 'From')+'</td>\
       <td>\
         <a href="#message-modal-' + message.id +
@@ -158,9 +185,11 @@ function appendMessageRow(message) {
           getHeader(message.payload.headers, 'Subject') +
         '</a>\
       </td>\
-      <td>'+getHeader(message.payload.headers, 'Date')+'</td>\
+      <td>'+message.internalDate+'</td>\
     </tr>'
   );
+
+  //  <td>'+getHeader(message.payload.headers, 'Date')+'</td>\
 
   $('body').append(
     '<div class="modal fade" id="message-modal-' + message.id +
@@ -187,12 +216,10 @@ function appendMessageRow(message) {
       </div>\
     </div>'
   );
-
   $('#message-link-'+message.id).on('click', function(){
     var modal = $('#message-modal-'+message.id);
     var ifrm = $('#message-iframe-'+message.id)[0].contentWindow.document;
     $('body', ifrm).html(getBody(message.payload));
     getAttachments(message, makeImage, modal);
   });
-
 }
