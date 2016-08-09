@@ -1,0 +1,11 @@
+<h1><%#= @message.subject %></h1>
+<%= link_to "Back to Inbox", emails_path %>
+
+<div id="message-body">
+  <%= @message.email_body %>
+</div>
+
+<hr>
+<div class='attachment'>
+  <%= @message.email_attachment %>
+</div>

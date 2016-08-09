@@ -1,4 +1,7 @@
 class MessagesController < ApplicationController
+   respond_to :html, :js
+
+  
   def new
     @message = Message.new
   end
