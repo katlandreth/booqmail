@@ -1,0 +1,26 @@
+<%= content_for(:title) {"Reply"} %>
+<%= form_tag create_reply_path, multipart: true do %>
+
+  <%= hidden_field_tag "email[id]", @message.email.uid %>
+  <div class="form-group">
+    <%= label_tag :send_to %>
+    <%= email_field_tag "email[send_to]", "#{@message.email.message.from[0]}" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :subject %>
+    <%= text_field_tag "email[subject]", "Re: #{@message.email.subject}" %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :message_body %>
+    <%= text_area_tag "email[message_body]", "<br>----------------<br>#{@message.email_body}" %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :message_attachment %>
+    <%= file_field_tag "email[message_attachment]" %>
+  </div>
+  <div class="actions">
+    <%= submit_tag 'Send Message' %>
+  </div>
+<% end %>

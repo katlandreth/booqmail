@@ -1,4 +1,5 @@
 <%= link_to "Back to Inbox", emails_path %>
+<%= link_to "Reply", new_reply_path(id: @message.uid) %>
 
 <div id="message-body">
   <%= @message.email_body %>

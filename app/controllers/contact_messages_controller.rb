@@ -1,7 +1,6 @@
 class ContactMessagesController < ApplicationController
    respond_to :html, :js
 
-
   def new
     @message = ContactMessage.new
   end

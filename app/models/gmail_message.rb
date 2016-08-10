@@ -1,9 +1,13 @@
 class GmailMessage < Gmail::Message
   attr_accessor :email_body, :email_attachment
 
-  def initialize(id)
+  def initialize(id = nil)
     @gmail = Gmail.connect!(ENV['GMAIL_USERNAME'], ENV['GMAIL_PASSWORD'])
     @uid = id
+  end
+
+  def email
+    @message = @gmail.inbox.emails(uid: @uid).first
   end
 
   def email_body
@@ -22,6 +26,23 @@ class GmailMessage < Gmail::Message
      img.html_safe
     else
       "no attachment"
+    end
+  end
+
+  def reply(options = {})
+    # @original_message = @gmail.inbox.emails(uid: options[:id]).first
+    @gmail.deliver! do
+      to options[:send_to]
+      subject options[:subject]
+      text_part do
+        body options[:message_body]
+      end
+      html_part do
+        content_type 'text/html; charset=UTF-8'
+        body options[:message_body]
+      end
+      binding.pry
+      add_file filename: options[:message_attachment].original_filename, content: File.read(options[:message_attachment].tempfile)
     end
   end
 end #end Message class
