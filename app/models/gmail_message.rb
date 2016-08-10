@@ -30,7 +30,6 @@ class GmailMessage < Gmail::Message
   end
 
   def reply(options = {})
-    # @original_message = @gmail.inbox.emails(uid: options[:id]).first
     @gmail.deliver! do
       to options[:send_to]
       subject options[:subject]
@@ -41,7 +40,6 @@ class GmailMessage < Gmail::Message
         content_type 'text/html; charset=UTF-8'
         body options[:message_body]
       end
-      binding.pry
       add_file filename: options[:message_attachment].original_filename, content: File.read(options[:message_attachment].tempfile)
     end
   end
