@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'sass-rails', '>= 3.2'
   s.add_dependency 'responders', '~> 2.0'
   s.add_dependency 'gmail'
-
+  s.add_dependency 'recaptcha'
+  
   s.add_development_dependency "sqlite3"
 end

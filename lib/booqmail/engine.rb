@@ -5,5 +5,6 @@ module Booqmail
     require 'bootstrap-sass'
     require 'responders'
     require 'gmail'
+    require 'recaptcha/rails'
   end
 end
