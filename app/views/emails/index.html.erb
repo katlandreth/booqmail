@@ -1,3 +1,4 @@
+<%= content_for(:title) {"Inbox"} %>
 <div class="container">
 <h1>Inbox</h1>
 
@@ -13,7 +14,7 @@
       <tr>
         <td><%= Mail.new(m.raw_message).from[0] %></td>
         <td><%= link_to m.subject, email_path(m.uid) %></td>
-        <td><%= m.date %></td>
+        <td><%= Time.strptime(m.date, "%a, %d %b %Y %T %z").strftime("%b %e, %l:%M%P") %></td>
       </tr>
       <% end %>
     </thead>
