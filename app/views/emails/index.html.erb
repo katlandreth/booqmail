@@ -9,7 +9,7 @@
         <th>Subject</th>
         <th>Date/Time</th>
       </tr>
-      <% @messages.each do |m| %>
+      <% @messages.reverse_each do |m| %>
       <tr>
         <td><%= Mail.new(m.raw_message).from[0] %></td>
         <td><%= link_to m.subject, email_path(m.uid) %></td>
