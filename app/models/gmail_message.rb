@@ -49,7 +49,9 @@ class GmailMessage < Gmail::Message
         content_type 'text/html; charset=UTF-8'
         body options[:message_body]
       end
-      add_file filename: options[:message_attachment].original_filename, content: File.read(options[:message_attachment].tempfile)
+      if options[:message_attachment] != nil
+        add_file filename: options[:message_attachment].original_filename, content: File.read(options[:message_attachment].tempfile)
+      end
     end
   end
 end #end Message class
