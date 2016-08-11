@@ -10,7 +10,7 @@
     </div>
   <% end %>
   <div class="form-group">
-    <p>The best email to reach you at when I send a response (required).</p>
+    <p>The email I can reach you at when I send a response (required).</p>
     <%= f.label :email %>
     <%= f.email_field :email %>
   </div>
@@ -18,6 +18,11 @@
     <p>The name you would like me to call you. It's nice to know who I'm talking to (optional).</p>
     <%= f.label :name %>
     <%= f.text_field :name %>
+  </div>
+  <div class="form-group">
+    <p>A subject for your email (required).</p>
+    <%= f.label :subject %>
+    <%= f.text_field :subject %>
   </div>
   <div class="form-group">
     <p>Your operating system (required).</p>

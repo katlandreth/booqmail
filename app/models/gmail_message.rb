@@ -29,6 +29,15 @@ class GmailMessage < Gmail::Message
     end
   end
 
+  def original_from
+    @message = @gmail.inbox.emails(uid: @uid).first
+    if @message.header[:'X-Google-Original-From'] != nil
+      @message.header[:'X-Google-Original-From'].value
+    else
+      @message.message.from[0]
+    end
+  end
+
   def reply(options = {})
     @gmail.deliver! do
       to options[:send_to]

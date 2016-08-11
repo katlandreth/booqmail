@@ -8,7 +8,7 @@ class Mailer < ApplicationMailer
       attachments[attachment_name] = message.image.read
     end
     mail(from: @message.email,
-         subject: "How to GIMP Contact Form",
+         subject: @message.subject,
          body: @message.content) do |format|
            format.html { render layout: 'mailer.html.erb' }
            format.text

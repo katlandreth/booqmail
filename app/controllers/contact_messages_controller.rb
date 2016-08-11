@@ -17,6 +17,6 @@ class ContactMessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:contact_message).permit(:email, :content, :image, :name, :gimp_version, :os_version)
+    params.require(:contact_message).permit(:email, :content, :image, :name, :gimp_version, :os_version, :subject)
   end
 end
