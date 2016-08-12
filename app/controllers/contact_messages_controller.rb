@@ -3,6 +3,8 @@ class ContactMessagesController < ApplicationController
 
   def new
     @message = ContactMessage.new
+    @os = OperatingSystem.all
+    @os_versions = OsVersion.where("operating_system_id = ?", OperatingSystem.first.id)
   end
 
   def create
@@ -15,8 +17,15 @@ class ContactMessagesController < ApplicationController
     end
   end
 
+  def update_os_versions
+    @os_versions = OsVersion.where("operating_system_id = ?", params[:operating_system_id])
+    respond_to do |f|
+      f.js
+    end
+  end
+
   private
   def message_params
-    params.require(:contact_message).permit(:email, :content, :image, :name, :gimp_version, :os_version, :subject)
+    params.require(:contact_message).permit(:email, :content, :image, :name, :gimp_version, :os_version, :subject, :operating_system_id, :os_version_id)
   end
 end
