@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    booqmail (0.0.1)
+    booqmail (1.0.0)
       bootstrap-sass (~> 3.3.6)
       coffee-rails
       figaro
@@ -51,7 +51,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
-    autoprefixer-rails (6.4.0.1)
+    autoprefixer-rails (6.5.0.2)
       execjs
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
@@ -75,7 +75,7 @@ GEM
     gmail (0.6.0)
       gmail_xoauth (>= 0.3.0)
       mail (>= 2.2.1)
-    gmail_xoauth (0.4.1)
+    gmail_xoauth (0.4.2)
       oauth (>= 0.3.6)
     i18n (0.7.0)
     jquery-rails (4.1.1)
