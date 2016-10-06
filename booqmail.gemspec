@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = Booqmail::VERSION
   s.authors     = ["Kat Landreth"]
   s.email       = ["katlandreth@gmail.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Booqmail."
-  s.description = "TODO: Description of Booqmail."
+  s.homepage    = "https://github.com/katlandreth/booqmail"
+  s.summary     = "A contact form gem for BooqCMS"
+  s.description = "An engine that handles contact form submission for BooqCMS."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
