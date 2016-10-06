@@ -1,6 +1,7 @@
+<% self.class.include Rails.application.routes.url_helpers %>
 $ ->
   $(document).on 'change', '#os_select', (evt) ->
-    $.ajax 'update_os_versions',
+    $.ajax '<%= update_os_versions_path %>',
       type: 'GET'
       dataType: 'script'
       data: {

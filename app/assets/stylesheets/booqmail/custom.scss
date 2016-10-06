@@ -1,0 +1,20 @@
+/* Variables */
+$error-color-light: #FFCCCC;
+$error-color-dark: #FF0044;
+
+.field_with_errors label {
+  color:$error-color-dark;
+}
+
+.field_with_errors label:before {
+  content: "*";
+  color:$error-color-dark;
+}
+
+.error-messages-container {
+  background: $error-color-light;
+}
+
+.field_with_errors {
+  display: inline;
+}

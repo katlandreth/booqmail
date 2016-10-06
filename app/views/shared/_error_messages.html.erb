@@ -1,0 +1,10 @@
+<div class="error-messages-container">
+  <% if object.errors.any? %>
+    <p class="alert alert-error">There were some errors in your message, so it couldn't be sent.</p>
+    <ul class="contact-message-errors">
+      <% object.errors.full_messages.each do |msg| %>
+        <li class="error"><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

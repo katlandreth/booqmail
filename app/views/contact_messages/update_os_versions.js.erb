@@ -1,2 +1,3 @@
 $('#version_select').empty();
+$('#version_select').append("<option value=''>select <%= escape_javascript indefinite_articlerize(@os_name) %> version</option>");
 $('#version_select').append("<%= escape_javascript render(partial: @os_versions) %>");

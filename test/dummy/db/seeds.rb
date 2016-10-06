@@ -11,6 +11,7 @@ OsVersion.create(name: "vista", operating_system_id: OperatingSystem.find_by(nam
 OsVersion.create(name: "7", operating_system_id: OperatingSystem.find_by(name: "windows").id)
 OsVersion.create(name: "8", operating_system_id: OperatingSystem.find_by(name: "windows").id)
 OsVersion.create(name: "10", operating_system_id: OperatingSystem.find_by(name: "windows").id)
+OsVersion.create(name: "other", operating_system_id: OperatingSystem.find_by(name: "windows").id)
 
 #Mac
 OsVersion.create(name: "osx 10.5 leopard", operating_system_id: OperatingSystem.find_by(name: "mac").id)
@@ -21,6 +22,7 @@ OsVersion.create(name: "osx 10.9 mavericks", operating_system_id: OperatingSyste
 OsVersion.create(name: "osx 10.10 yosemite", operating_system_id: OperatingSystem.find_by(name: "mac").id)
 OsVersion.create(name: "osx 10.11 el capitan", operating_system_id: OperatingSystem.find_by(name: "mac").id)
 OsVersion.create(name: "osx 10.12 sierra", operating_system_id: OperatingSystem.find_by(name: "mac").id)
+OsVersion.create(name: "other", operating_system_id: OperatingSystem.find_by(name: "mac").id)
 
 #Linux/Ubuntu
 
@@ -63,3 +65,8 @@ OsVersion.create(name: "symphony os", operating_system_id: OperatingSystem.find_
 OsVersion.create(name: "salineos", operating_system_id: OperatingSystem.find_by(name: "linux/ubuntu").id)
 OsVersion.create(name: "tails", operating_system_id: OperatingSystem.find_by(name: "linux/ubuntu").id)
 OsVersion.create(name: "xanadu", operating_system_id: OperatingSystem.find_by(name: "linux/ubuntu").id)
+OsVersion.create(name: "other", operating_system_id: OperatingSystem.find_by(name: "linux/ubuntu").id)
+
+GimpVersion.create(name: "GIMP 2.6")
+GimpVersion.create(name: "GIMP 2.8")
+GimpVersion.create(name: "GIMP 2.9")
