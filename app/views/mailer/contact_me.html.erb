@@ -1,8 +1,9 @@
-<h3><%= @message.subject %></h3>
 <p>Sender email: <%= @message.email %></p>
 <p>Sender name: <%= @message.name %></p>
 <hr>
-<p>GIMP Version: <%= @message.gimp_version%></p>
-<p>OS Version: <%= @message.os_version%></p>
+</br></br>
+<p>GIMP Version: <%= @message.gimp_version %></p>
+<p>OS Version: <%= @message.operating_system_id %> version <%= @message.os_version_id %> </p>
 <hr>
+</br></br>
 <p><%= @message.content %></p>

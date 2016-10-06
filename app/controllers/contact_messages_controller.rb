@@ -14,6 +14,7 @@ class ContactMessagesController < ApplicationController
     @gimp_versions =GimpVersion.all
     @message = ContactMessage.new(message_params)
     if verify_recaptcha() && @message.valid?
+      binding.pry
       Mailer.contact_me(@message).deliver_now
       redirect_to new_contact_message_path, notice: "Your message has been sent"
     else
