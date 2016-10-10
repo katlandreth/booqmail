@@ -18,15 +18,15 @@
     <div class="form-group">
       <%= f.label :operating_system_id %>
       <%= f.select :operating_system_id, options_for_select(@os.collect { |os|
-      [os.name, os.name] }, 0), {include_blank: "select one" }, { id: 'os_select' } %>
+      [os.name, os.id] }, 0), {include_blank: "select one" }, { id: 'os_select' } %>
       <%= f.label :os_version_id %>
       <%= f.select :os_version_id, options_for_select(@os_versions.collect { |os_version|
-      [os_version.name, os_version.name] }, 0), {include_blank: "select one"}, { id: 'version_select' } %>
+      [os_version.name, os_version.id] }, 0), {include_blank: "select one"}, { id: 'version_select' } %>
     </div>
     <div class="form-group">
       <%= f.label :gimp_version %></br>
       <%= f.select :gimp_version, options_for_select(@gimp_versions.collect { |gimp_version|
-      [gimp_version.name, gimp_version.name] }, 0), {include_blank: "select one"}, { id: 'gimp_version_select' } %>
+      [gimp_version.name, gimp_version.id] }, 0), {include_blank: "select one"}, { id: 'gimp_version_select' } %>
     </div>
 
     <div class="form-group">
