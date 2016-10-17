@@ -3,46 +3,69 @@
   <h1>Contact Form</h1>
   <%= form_for @message, :multipart => true do |f| %>
     <%= render 'shared/error_messages', :object => @message %>
-    <div class="form-group">
-      <%= f.label :email %></br>
-      <%= f.email_field :email %>
+    <div class="sender-info content-group">
+      <h3>Your Information</h3>
+      <div class="form-group">
+        <%= f.label :email %></br>
+        <%= f.email_field :email %>
+      </div>
+      <div class="form-group">
+        <%= f.label :name %></br>
+        <%= f.text_field :name %>
+      </div>
+      <div class="form-group">
+        <%= f.label :subject %></br>
+        <%= f.text_field :subject %>
+      </div>
     </div>
-    <div class="form-group">
-      <%= f.label :name %></br>
-      <%= f.text_field :name %>
+    <div class="contact-reason">
+      <h3>Reason for Contacting</h3>
+      <div class="form-group">
+        <%= f.label :reason %></br>
+        <%= f.select :reason, options_for_select({"help using GIMP" => "gimp help", "help with purchase" => "purchase help", "business inquiry" => "business", "other help/inquiry" => "other"}), {include_blank: "select one" }, { id: 'reason' } %>
+      </div>
     </div>
-    <div class="form-group">
-      <%= f.label :subject %></br>
-      <%= f.text_field :subject %>
+    <div class="system-info content-group">
+      <h3>Your System Information (required if asking for GIMP help)</h3>
+      <div class="form-group">
+        <%= f.label :gimp_version %></br>
+        <%= f.select :gimp_version, options_for_select(@gimp_versions.collect { |gimp_version|
+        [gimp_version.name, gimp_version.name] }, 0), {include_blank: "select one"}, { id: 'gimp_version_select' } %>
+      </div>
+      <div class="form-group">
+        <%= f.label :operating_system_id %></br>
+        <%= f.select :operating_system_id, options_for_select(@os.collect { |os|
+        [os.name, os.id] }, 0), {include_blank: "select one" }, { id: 'os_select' } %>
+      </div>
+      <div class="form-group">
+        <%= f.label :os_version_id %></br>
+        <%= f.select :os_version_id, options_for_select(@os_versions.collect { |os_version|
+        [os_version.name, os_version.id] }, 0), {include_blank: "select one"}, { id: 'version_select' } %>
+      </div>
     </div>
-    <div class="form-group">
-      <%= f.label :operating_system_id %>
-      <%= f.select :operating_system_id, options_for_select(@os.collect { |os|
-      [os.name, os.id] }, 0), {include_blank: "select one" }, { id: 'os_select' } %>
-      <%= f.label :os_version_id %>
-      <%= f.select :os_version_id, options_for_select(@os_versions.collect { |os_version|
-      [os_version.name, os_version.id] }, 0), {include_blank: "select one"}, { id: 'version_select' } %>
-    </div>
-    <div class="form-group">
-      <%= f.label :gimp_version %></br>
-      <%= f.select :gimp_version, options_for_select(@gimp_versions.collect { |gimp_version|
-      [gimp_version.name, gimp_version.name] }, 0), {include_blank: "select one"}, { id: 'gimp_version_select' } %>
-    </div>
+    <div class="message-content content-group">
+      <h3>Your message</h3>
+      <div class="contact-alert contact-hide">
+        You chose "other" for your operating system version. If you know
+        your operating system version, please include it in your message below.
+      </div>
+      <div class="form-group">
+        <%= f.label :content %></br>
+        <%= f.text_area :content %>
+      </div>
 
-    <div class="form-group">
-      <p>Your message</p>
-      <%= f.label :content %></br>
-      <%= f.text_area :content %>
+      <div class="form-group">
+        <%= f.label :image %></br>
+        <p>Attach a screenshot or another image that helps demonstrate the problem you're having (optional).</p>
+        <%= f.file_field :image %>
+      </div>
     </div>
-
-    <div class="form-group">
-      <%= f.label :image %></br>
-      <p>Attach a screenshot or another image that helps demonstrate the problem you're having (optional).</p>
-      <%= f.file_field :image %>
-    </div>
-    <div class="actions">
-      <%= recaptcha_tags %>
-      <%= f.submit 'Send Message' %>
+    <div class="send-message content-group">
+      <h3>Confirm and Send</h3>
+      <div class="actions">
+        <%= recaptcha_tags %>
+        <%= f.submit 'Send Message' %>
+      </div>
     </div>
   <% end %>
 </div>

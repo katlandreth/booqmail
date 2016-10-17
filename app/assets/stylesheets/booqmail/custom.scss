@@ -18,3 +18,26 @@ $error-color-dark: #FF0044;
 .field_with_errors {
   display: inline;
 }
+
+.contact-alert {
+  color: #8B4500;
+  background: #FFD39B;
+  padding:10px;
+}
+
+.system-info,
+.contact-alert {
+  overflow:hidden;
+  max-height:0;
+}
+
+.contact-hide {
+  max-height:0;
+  transition: max-height 1s ease;
+  padding:0;
+}
+
+.contact-show {
+  max-height:800px;
+  transition: max-height 1s ease;
+}
