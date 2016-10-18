@@ -41,3 +41,32 @@ $error-color-dark: #FF0044;
   max-height:800px;
   transition: max-height 1s ease;
 }
+
+.how-to-ask {
+  img {
+    width:60%;
+    height:auto;
+    margin: 10px auto;
+    display:block;
+  }
+}
+
+.good-example {
+  color:#006400;
+  background:#dbf0d0;
+  padding: 10px;
+  position:relative;
+  &:before {
+    content: "✓";
+  }
+}
+
+.bad-example {
+  position:relative;
+  padding: 10px;
+  color:#B0171F;
+  background: #EEE0E5;
+  &:before {
+    content: "❌";
+  }
+}

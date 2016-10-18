@@ -11,7 +11,7 @@ class ContactMessagesController < ApplicationController
   def create
     @os = OperatingSystem.all
     @os_versions = OsVersion.where("operating_system_id = ?", OperatingSystem.first.id)
-    @gimp_versions =GimpVersion.all
+    @gimp_versions = GimpVersion.all
     @message = ContactMessage.new(message_params)
     if verify_recaptcha() && @message.valid?
       Mailer.contact_me(@message).deliver_now
@@ -37,6 +37,7 @@ class ContactMessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:contact_message).permit(:email, :content, :image, :name, :gimp_version, :os_version, :subject, :operating_system_id, :os_version_id)
+    params.require(:contact_message).permit(:email, :content, :image, :name,
+    :gimp_version, :os_version, :subject, :operating_system_id, :os_version_id, :reason)
   end
 end
