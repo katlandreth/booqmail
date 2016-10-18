@@ -45,11 +45,18 @@
     </div>
     <div class="message-content content-group">
       <h3>Your message</h3>
-      <div class="contact-alert contact-hide">
-        You chose "other" for your operating system version. If you know
-        your operating system version, please include it in your message below.
-      </div>
       <div class="form-group">
+        <div class="better-question-prompt contact-hide">
+          <p>Need <span id="better-question-reason"></span>? Check out our FAQs -
+          your question might already be answered there.</p>
+
+          <p>Still stumped? Learn <i><a href="#">how to ask a great support question</a></i>
+          to get better answers, faster.</p>
+        </div>
+        <div class="contact-alert contact-hide">
+          If you know your operating system version but didn't see it in the OS
+          Version list, please include it in your message below.
+        </div>
         <%= f.label :content %></br>
         <%= f.text_area :content %>
       </div>
@@ -68,7 +75,4 @@
       </div>
     </div>
   <% end %>
-</div>
-<div class="how-to-ask">
-  <%= render "how_to_ask" %>
 </div>
