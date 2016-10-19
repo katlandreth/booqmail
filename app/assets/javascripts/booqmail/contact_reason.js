@@ -7,24 +7,35 @@ $(document).ready(function(){
   var adaptForm = function(reason) {
     switch(reason) {
       case "gimp help":
-        adaptSectionVisibility(".system-info, .better-question-prompt", "show");
+        adaptSectionVisibility(".system-info", "show");
         adaptHelpText("gimp help", "show");
+        $("#contact_message_content").focus(function(){
+          adaptSectionVisibility(".better-question-prompt", "show");
+        });
+        $("#contact_message_content").blur(function(){
+          adaptSectionVisibility(".better-question-prompt", "hide");
+        });
         break;
 
       case "purchase help":
         adaptSectionVisibility(".system-info, .contact-alert", "hide");
-        adaptSectionVisibility(".better-question-prompt", "show");
+        $("#contact_message_content").focus(function(){
+          adaptSectionVisibility(".better-question-prompt", "show");
+        });
+        $("#contact_message_content").blur(function(){
+          adaptSectionVisibility(".better-question-prompt", "hide");
+        });
         adaptHelpText("purchase help", "show");
         break;
 
       case "business":
         adaptSectionVisibility(".system-info, .better-question-prompt, .contact-alert", "hide");
-        adaptHelpText("", "hide");
+        adaptHelpText("business", "hide");
         break;
 
       case "other":
         adaptSectionVisibility(".system-info, .better-question-prompt, .contact-alert", "hide");
-        adaptHelpText("", "hide");
+        adaptHelpText("other", "hide");
         break;
     }
   };
@@ -39,12 +50,11 @@ $(document).ready(function(){
   };
 
   var adaptHelpText = function(reason, visibility) {
-    if (visibility == "show") {
-      $("#better-question-reason").text(reason);
-    }
-    else {
-      $("#better-question-reason").text("");
-    }
+    var reasonClass = "." + reason.replace(/\s/g, "-");
+    console.log(reasonClass);
+    $(".better-question-step").hide();
+    $("#better-question-reason").text(reason).addClass("contact-" + visibility);
+    $(".better-question-step" + reasonClass ).show();
   };
 
 });

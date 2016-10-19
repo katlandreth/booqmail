@@ -42,20 +42,38 @@
         <%= f.select :os_version_id, options_for_select(@os_versions.collect { |os_version|
         [os_version.name, os_version.id] }, 0), {include_blank: "select one"}, { id: 'version_select' } %>
       </div>
+      <div class="contact-alert contact-hide">
+        If you know your operating system version but didn't see it in the OS
+        Version list, please include it in your message below.
+      </div>
     </div>
     <div class="message-content content-group">
       <h3>Your message</h3>
       <div class="form-group">
         <div class="better-question-prompt contact-hide">
-          <p>Need <span id="better-question-reason"></span>? Check out our FAQs -
-          your question might already be answered there.</p>
-
-          <p>Still stumped? Learn <i><a href="#">how to ask a great support question</a></i>
-          to get better answers, faster.</p>
-        </div>
-        <div class="contact-alert contact-hide">
-          If you know your operating system version but didn't see it in the OS
-          Version list, please include it in your message below.
+          <p>Need <span id="better-question-reason"></span>?
+            <p class="better-question-step purchase-help">I want to get you that help as quickly as possible.<p>
+              For the fastest help, check out our FAQs - your question might already be answered there.
+              <div class="better-question-step purchase-help">
+                <p>Otherwise, please send a message with a description of the problem and any
+                information you think might be relevant.</p>
+                For example, if you're having trouble with a purchase you already made, the email address
+                you used to make the purchase is super helpful.
+                Or, if you're trying to make a purchase and a buy now button
+                isn't working, sending the web address where that button is would be very helpful.</p>
+              </div>
+            </p>
+          <div class="better-question-step gimp-help">
+            <p>Still stumped? Follow these steps to write a great support request:</p>
+            <ol>
+              <li>Describe the problem - <i>What</i> you're trying to do, <i>what</i>
+                went wrong, and <i>how</i> it went wrong.</li>
+              <li>Write out the steps I should follow to reproduce the problem -
+                Try to start from the very beginning (ie Start GIMP, then Open a JPG that's 1000 x 2000 pixels...) The more detail, the better.
+                Try opening GIMP and follow your steps exactly as you've written them to make sure you didn't leave anything out.</li>
+              <li>If possible, upload a screenshot that helps demonstrate the problem - these help me catch details you might have missed.</li>
+            </ol>
+          </div>
         </div>
         <%= f.label :content %></br>
         <%= f.text_area :content %>

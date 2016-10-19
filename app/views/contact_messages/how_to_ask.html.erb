@@ -1,0 +1,42 @@
+<div class="how-to-ask-page">
+  <p>Writing a good support request can be tough. You'll get better help faster if
+  you take a little time and follw these guidelines for writing a great support request.</p>
+  <ol>
+    <li>
+      <h3>Be specific</h3>
+      <p>A one sentece support request might be quick to write, but take days of back-and-forth
+      emails and clarification.<p/>
+      <div class="bad-example">
+        <p>"When I use the blur filter, it doesn't work."</p>
+      </div>
+      <p><i>It doesn't work</i> could mean a lot of things. Did GIMP crash? Was the blur efect not strong enough? Was there an error message?  I'll have to ask a lot of questions to get to the bottom of the problem.</p>
+      <p>On the other hand, a support request that took ten or fifteen minutes to write might get a response that solves the problem right away.</p>
+      <div class="good-example">
+        <p>I want make an area inside a selection blurry to hide some personal information in a screen shot that's 842px wide by 434px high.</p>
+        <p>I used the rectangle select tool to make a selection. Then I go to
+          Filters > Blur > Gaussian Blur and choose 50px for the horizontal and vertical blur settings.
+          I have preview checked, but the preview doesn't change. When I click apply, nothing in my image is blurred, and I still see a solid selection box.</p>
+        <p>I expect the selection to be very blurry, but it's not. Am I doing something wrong? I've attached a screenshot of GIMP from immediately after trying the blur filter.</p>
+      </div>
+      <p>The details in this example hep me rule out a lot of possibilities right off the bat. That means there won't be lots of back and forth emails asking for clarification.
+      I know exactly what the person expects to see, and they've described what they actually are seeing, and I can follow the steps in their description to reproduce the problem. </p>
+    </li>
+    <li>
+      <h3>Add a screen shot if possible</h3>
+      <p>A picture is worth a thousand words here.</p>
+      <p>It's easy to overlook small details, especially when you're new to GIMP.
+      Uploading a screenshot with your support request lets me quickly take a look at some of those details.</p>
+      <%= image_tag "booqmail/screenshot"%>
+      <p>There are some clues in this screen shot that will help me solve the problem
+      for this user right away.</p>
+      <p>I can see there's no dotted line around the selection
+      box, which means there isn't really a selection there. I can also see in the
+      Selection Tool Options that the selection mode is set to "Intersect".</p>
+      <p>The user must have switched from "Create Selection" mode to "Intersect with Selection"
+      mode and unknowingly ended up with a tiny selection instead of the larger selection
+      they intended.</p>
+      <p>Between the detailed, well written support request, and the screenshot,
+        It's easy for me to tell what's going wrong and how to fix it.</p>
+    </li>
+  </ol>
+</div>
