@@ -40,6 +40,7 @@ $error-color-dark: #FF0044;
   max-height:0;
   transition: max-height 1s ease;
   padding:0;
+  border:0;
   overflow:hidden;
 }
 
@@ -102,4 +103,12 @@ $error-color-dark: #FF0044;
     left:-30px;
     font-size:40px;
   }
+  ol {
+    background: #fff8dc;
+    padding: 10px 35px;
+  }
+}
+
+#better-question-reason {
+  font-variant: small-caps;
 }
