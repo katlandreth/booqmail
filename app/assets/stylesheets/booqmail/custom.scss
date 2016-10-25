@@ -87,17 +87,19 @@ $error-color-dark: #FF0044;
 
 .better-question-prompt {
   position:absolute;
-  left:100%;
-  background:#FFD39B;
-  color:#8B4500;
-  width:50%;
+  left:80%;
+  background:#FFF;
+  color:#CCC;
+  width:400px;
   padding:20px;
+  border: 2px solid #A4D3EE;
   &:before {
     content: "◀";
-    color: #FFD39B;
+    text-shadow: -4px 0 0 #A4D3EE;
+    color:#fff;
     position:absolute;
     top:40px;
-    left:-32px;
+    left:-30px;
     font-size:40px;
   }
 }
