@@ -24,9 +24,10 @@ $error-color-dark: #FF0044;
 }
 
 .contact-alert {
-  color: #8B4500;
-  background: #FFD39B;
+  color: #333;
+  background: #fff8dc;
   padding:10px;
+  margin-bottom:30px;
 }
 
 .system-info,
@@ -88,7 +89,7 @@ $error-color-dark: #FF0044;
 
 .better-question-prompt {
   position:absolute;
-  left:80%;
+  left:100%;
   background:#FFF;
   color:#333;
   width:400px;
@@ -111,4 +112,8 @@ $error-color-dark: #FF0044;
 
 #better-question-reason {
   font-variant: small-caps;
+}
+
+#contact_message_content {
+  min-width:100%;
 }
