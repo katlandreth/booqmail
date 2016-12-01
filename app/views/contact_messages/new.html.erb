@@ -50,6 +50,9 @@
     <div class="message-content content-group">
       <h3>Your message</h3>
       <div class="form-group">
+
+        <%= f.label :content %></br>
+        <%= f.text_area :content %>
         <div class="better-question-prompt contact-hide">
           <h3>Need <span id="better-question-reason"></span>?</h3>
             <p class="better-question-step purchase-help">I want to get you that help as quickly as possible.</p>
@@ -75,8 +78,6 @@
             </ol>
           </div>
         </div>
-        <%= f.label :content %></br>
-        <%= f.text_area :content %>
       </div>
 
       <div class="form-group">
