@@ -12,11 +12,13 @@ $(document).ready(function(){
         $("#contact_message_content").focus(function(){
           adaptSectionVisibility(".better-question-prompt", "show");
         });
-        $("#contact_message_content").blur(function(){
-          adaptSectionVisibility(".better-question-prompt", "hide");
-        });
-        $(".better-question-prompt .dismiss-button").click(function(){
-          adaptSectionVisibility(".better-question-prompt", "dismiss");
+        $("#contact_message_content").blur(function(e){
+          if ($(e.relatedTarget).attr('class') == 'dismiss-button') {
+            adaptSectionVisibility(".better-question-prompt", "dismiss");
+          }
+          else {
+            adaptSectionVisibility(".better-question-prompt", "hide");
+          }
         });
         break;
 
