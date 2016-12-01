@@ -15,7 +15,7 @@ $(document).ready(function(){
         $("#contact_message_content").blur(function(){
           adaptSectionVisibility(".better-question-prompt", "hide");
         });
-        $(".better-question-prompt .dismiss-button").blur(function(){
+        $(".better-question-prompt .dismiss-button").click(function(){
           adaptSectionVisibility(".better-question-prompt", "dismiss");
         });
         break;
@@ -44,7 +44,7 @@ $(document).ready(function(){
   };
 
   var adaptSectionVisibility = function(section, visibility) {
-    if (visibility == "show" && section.hasClass("dismissed")) {
+    if (visibility == "show" && $(section).hasClass("dismissed")) {
       return
     }
     else if (visibility == "show") {
