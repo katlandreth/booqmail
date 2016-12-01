@@ -15,6 +15,9 @@ $(document).ready(function(){
         $("#contact_message_content").blur(function(){
           adaptSectionVisibility(".better-question-prompt", "hide");
         });
+        $(".better-question-prompt .dismiss-button").blur(function(){
+          adaptSectionVisibility(".better-question-prompt", "dismiss");
+        });
         break;
 
       case "purchase help":
@@ -41,11 +44,17 @@ $(document).ready(function(){
   };
 
   var adaptSectionVisibility = function(section, visibility) {
-    if (visibility == "show") {
+    if (visibility == "show" && section.hasClass("dismissed")) {
+      return
+    }
+    else if (visibility == "show") {
       $(section).removeClass("contact-hide").addClass("contact-show");
     }
-    else {
+    else if (visibility == "hide") {
       $(section).removeClass("contact-show").addClass("contact-hide");
+    }
+    else if (visibility == "dismiss") {
+      $(section).removeClass("contact-show").addClass("contact-hide dismissed");
     }
   };
 
