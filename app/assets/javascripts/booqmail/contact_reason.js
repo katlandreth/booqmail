@@ -13,10 +13,11 @@ $(document).ready(function(){
           adaptSectionVisibility(".better-question-prompt", "show");
         });
         $("#contact_message_content").blur(function(e){
-          if ($(e.relatedTarget).attr('class') == 'dismiss-button') {
+          if ($( e.relatedTarget ).hasClass('dismiss-button')) {
             adaptSectionVisibility(".better-question-prompt", "dismiss");
           }
           else {
+            console.log($( e.relatedTarget ));
             adaptSectionVisibility(".better-question-prompt", "hide");
           }
         });

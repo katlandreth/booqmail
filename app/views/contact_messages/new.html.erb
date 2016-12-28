@@ -54,17 +54,12 @@
         <%= f.label :content %></br>
         <%= f.text_area :content %>
         <div class="better-question-prompt contact-hide">
-          <span class="pull-right dismiss-button">✖</span>
+          <button type="button" class="pull-right dismiss-button">✖</button>
           <h3>Need <span id="better-question-reason"></span>?</h3>
             <p class="better-question-step purchase-help">I want to get you that help as quickly as possible.</p>
-              <p>For the fastest help, check out our FAQs - your question might already be answered there.</p>
+              <p>Check out our FAQs - your question might already be answered there.</p>
               <div class="better-question-step purchase-help">
-                <p>Otherwise, please send a message with a description of the problem and any
-                information you think might be relevant.</p>
-                <p>For example, if you're having trouble with a purchase you already made, the email address
-                you used to make the purchase is super helpful.</p>
-                <p>Or, if you're trying to make a purchase and a buy now button
-                isn't working, the web address where that button is would be very helpful.</p>
+                <p>Otherwise, please send a detailed description of the problem and I'll get back to you as soon as possibe.</p>
               </div>
             </p>
           <div class="better-question-step gimp-help">
@@ -72,10 +67,9 @@
             <ol>
               <li>Describe the problem - What you're trying to do, what
                 went wrong, and <i>how</i> it went wrong.</li>
-              <li>Write out the steps to reproduce the problem -
-                Start from the very beginning <span class="hidden-sm-down">(ie <i>Start GIMP, then Open a JPG that's 1000px x 2000px</i>)</span> The more detail, the better.</li>
-                <li>Make sure you didn't forget anything - try opening GIMP and follow your steps exactly as you've written them.</li>
-              <li>If possible, upload a screenshot that helps demonstrate the problem <span class="hidden-sm-down">- these help me catch probles you might not see.</span></li>
+              <li>Include steps to reproduce the problem -
+                Start from the beginning <span class="hidden-sm-down">(ie <i>Start GIMP, then Open a JPG that's 1000px x 2000px ...</i>)</span> The more detail, the better.</li>
+              <li>Try opening GIMP and follow your steps exactly as you've written them to make sure you didn't miss important steps.</li>
             </ol>
           </div>
         </div>
@@ -83,7 +77,8 @@
 
       <div class="form-group">
         <%= f.label :image %></br>
-        <p>Attach a screenshot or another image that helps demonstrate the problem you're having (optional).</p>
+        <p>Attach a screenshot or another image that helps demonstrate the problem you're having (optional). </p>
+          <span class="hidden-sm-down">- these help me catch probles you might not see.</span>
         <%= f.file_field :image %>
       </div>
     </div>
