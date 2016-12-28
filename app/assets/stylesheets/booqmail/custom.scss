@@ -95,14 +95,13 @@ $error-color-dark: #FF0044;
   padding:20px;
   border: 2px solid #A4D3EE;
   &:before {
-    // content: "◀";
     content: "▲";
     text-shadow: 0 -4px 0 #A4D3EE;
     color:#fff;
     position:absolute;
-    top:-40px;
-    left:-0px;
-    font-size:40px;
+    top:-25px;
+    left:5px;
+    font-size:25px;
   }
   ol {
     background: #fff8dc;
@@ -116,4 +115,19 @@ $error-color-dark: #FF0044;
 
 #contact_message_content {
   min-width:100%;
+}
+
+.activate-prompt-button {
+  display:inline;
+  opacity: 0;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 -1px 3px rgba(0,0,0,0.4);
+  background-color: #3498db;
+  color: #fff;
+  font-family: monospace;
+  transition: opacity 1s ease;
+  &.button-show {
+    opacity: 1;
+  }
 }

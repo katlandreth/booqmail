@@ -7,50 +7,31 @@ $(document).ready(function(){
   var adaptForm = function(reason) {
     switch(reason) {
       case "gimp help":
-        adaptSectionVisibility(".system-info", "show");
-        adaptHelpText("gimp help", "show");
-        $("#contact_message_content").focus(function(){
-          adaptSectionVisibility(".better-question-prompt", "show");
-        });
-        $("#contact_message_content").blur(function(e){
-          if ($( e.relatedTarget ).hasClass('dismiss-button')) {
-            adaptSectionVisibility(".better-question-prompt", "dismiss");
-          }
-          else {
-            console.log($( e.relatedTarget ));
-            adaptSectionVisibility(".better-question-prompt", "hide");
-          }
-        });
+        sectionVisibility(".system-info", "show");
+        helpText("gimp help", "show");
+        interactions();
         break;
 
       case "purchase help":
-        adaptSectionVisibility(".system-info, .contact-alert", "hide");
-        $("#contact_message_content").focus(function(){
-          adaptSectionVisibility(".better-question-prompt", "show");
-        });
-        $("#contact_message_content").blur(function(){
-          adaptSectionVisibility(".better-question-prompt", "hide");
-        });
-        adaptHelpText("purchase help", "show");
+        helpText("purchase help", "show");
+        sectionVisibility(".system-info, .contact-alert", "hide");
+        interactions();
         break;
 
       case "business":
-        adaptSectionVisibility(".system-info, .better-question-prompt, .contact-alert", "hide");
+        sectionVisibility(".system-info, .better-question-prompt, .contact-alert", "hide");
         adaptHelpText("business", "hide");
         break;
 
       case "other":
-        adaptSectionVisibility(".system-info, .better-question-prompt, .contact-alert", "hide");
+        sectionVisibility(".system-info, .better-question-prompt, .contact-alert", "hide");
         adaptHelpText("other", "hide");
         break;
     }
   };
 
-  var adaptSectionVisibility = function(section, visibility) {
-    if (visibility == "show" && $(section).hasClass("dismissed")) {
-      return
-    }
-    else if (visibility == "show") {
+  var sectionVisibility = function(section, visibility) {
+    if (visibility == "show") {
       $(section).removeClass("contact-hide").addClass("contact-show");
     }
     else if (visibility == "hide") {
@@ -61,12 +42,30 @@ $(document).ready(function(){
     }
   };
 
-  var adaptHelpText = function(reason, visibility) {
+  var helpText = function(reason, visibility) {
     var reasonClass = "." + reason.replace(/\s/g, "-");
-    console.log(reasonClass);
     $(".better-question-step").hide();
     $("#better-question-reason").text(reason).addClass("contact-" + visibility);
     $(".better-question-step" + reasonClass ).show();
   };
 
+  var interactions = function(){
+    $("#contact_message_content").focus(function(){
+      if ($(".better-question-prompt").hasClass("dismissed")) {
+        return
+      }
+      else {
+        sectionVisibility(".better-question-prompt", "show");
+      }
+    });
+
+    $(".dismiss-button").click(function(){
+      sectionVisibility(".better-question-prompt", "dismiss");
+      $(".activate-prompt-button").addClass("button-show");
+    });
+
+    $(".activate-prompt-button").click(function(){
+      sectionVisibility(".better-question-prompt", "show");
+    });
+  };
 });
