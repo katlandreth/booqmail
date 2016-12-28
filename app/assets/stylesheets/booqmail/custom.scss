@@ -23,6 +23,10 @@ $error-color-dark: #FF0044;
   display: inline;
 }
 
+.content-group {
+  padding: 20px 0;
+}
+
 .contact-alert {
   color: #333;
   background: #fff8dc;
@@ -34,6 +38,7 @@ $error-color-dark: #FF0044;
 .contact-alert {
   overflow:hidden;
   max-height:0;
+  padding: 0;
 }
 
 .contact-hide,
@@ -147,8 +152,4 @@ $error-color-dark: #FF0044;
   &.button-show {
     opacity: 1;
   }
-}
-
-.content-group {
-  padding: 20px 0;
 }
