@@ -78,7 +78,9 @@
       <div class="form-group">
         <%= f.label :image %></br>
         <p>Attach a screenshot or another image that helps demonstrate the problem you're having (optional). </p>
-          <span class="hidden-sm-down">- these help me catch probles you might not see.</span>
+        <div class="upload-preview">
+          <img />
+        </div>
         <%= f.file_field :image %>
       </div>
     </div>
