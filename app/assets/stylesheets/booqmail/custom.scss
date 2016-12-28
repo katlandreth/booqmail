@@ -118,15 +118,22 @@ $error-color-dark: #FF0044;
 }
 
 .booqmail-form-wrapper button.activate-prompt-button {
-  display:inline;
-  opacity: 0;
-  border: none;
+  background-color: #fff;
+  border: 1px solid #3498db;
   border-radius: 50%;
-  box-shadow: 0 -1px 3px rgba(0,0,0,0.4);
-  background-color: #3498db;
-  color: #fff;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  color: #3498db;
+  display: inline;
   font-family: monospace;
-  transition: opacity 1s ease;
+  font-size: 14px;
+  height: 20px;
+  line-height: 20px;
+  opacity: 0;
+  padding: 0;
+  text-align: center;
+  transition: opacity 1s ease 0s;
+  vertical-align: middle;
+  width: 20px;
   &.button-show {
     opacity: 1;
   }
