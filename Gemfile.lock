@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    booqmail (1.2.12)
+    booqmail (1.2.20)
       bootstrap-sass (~> 3.3.6)
       coffee-rails
       figaro

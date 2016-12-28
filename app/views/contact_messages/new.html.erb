@@ -81,14 +81,14 @@
         <div class="upload-preview">
           <img />
         </div>
-        <%= f.file_field :image %>
+        <%= f.file_field :image, class: 'file' %>
       </div>
     </div>
     <div class="send-message content-group">
       <h3>Confirm and Send</h3>
       <div class="actions">
         <%= recaptcha_tags %>
-        <%= f.submit 'Send Message' %>
+        <%= f.submit 'Send Message', id: "send-message" %>
       </div>
     </div>
   <% end %>
