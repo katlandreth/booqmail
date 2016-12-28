@@ -89,19 +89,23 @@ $error-color-dark: #FF0044;
 
 .better-question-prompt {
   position:relative;
-  background:#FFF;
+  background:#fff8dc;
   color:#333;
   width:100%;
   padding:20px;
-  border: 2px solid #A4D3EE;
+  border: 3px solid #A4D3EE;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
   &:before {
     content: "▲";
-    text-shadow: 0 -4px 0 #A4D3EE;
-    color:#fff;
+    text-shadow: 0 -5px 0 #A4D3EE;
+    color:##fff8dc;
     position:absolute;
     top:-25px;
     left:5px;
     font-size:25px;
+  }
+  .dismiss-button {
+    background: #fff;
   }
   ol {
     background: #fff8dc;
