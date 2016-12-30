@@ -171,3 +171,73 @@ $error-color-dark: #FF0044;
   text-transform: uppercase;
   width: 100%;
 }
+
+div.flash_success,
+div.flash_error,
+div.flash_notice,
+div.flash_alert,
+div.flash_open {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    z-index: 2000;
+    transition: all 0.5s ease;
+    transform: translate(-50%, -200px);
+    text-align: center;
+    background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+    padding: 20px;
+    font-family: "Montserrat";
+    text-transform: capitalize;
+    animation: show-hide 4s ease;
+    &.flash_show {
+      transform: translate(-50%, 0);
+    }
+}
+
+.flash_button,
+.scroll_button,
+.round-button {
+  border-radius: 50%;
+  box-shadow: none;
+  font-size:25px;
+  width:35px;
+  height:35px;
+  padding: 0px;
+  margin:10px;
+  line-height:1;
+  color:#fff;
+  &.flash_success {
+    //background: $success-color;
+    color: $success-color;
+    border: 3px solid $success-color;
+  }
+  &.flash_error {
+    background: $error-color;
+    //color: $error-color;
+    border: 3px solid $error-color;
+  }
+  &.flash_notice {
+    background: $notice-color;
+    //color: $notice-color;
+    border: 3px solid $notice-color;
+    font-family: monospace;
+    font-weight:bold;
+    font-size:20px;
+  }
+  &.flash_alert {
+    background: $alert-color;
+    //color: $alert-color;
+    border: 3px solid $alert-color;
+  }
+  &.scroll_down {
+    background: #fff;
+    border: 2px solid $action-color-warm;
+    color: $action-color-warm;
+    box-shadow: 0 0 3px rgba(0,0,0,0.4);
+    text-decoration: none;
+    text-align: center;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

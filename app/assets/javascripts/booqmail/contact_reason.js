@@ -20,12 +20,12 @@ $(document).ready(function(){
 
       case "business":
         sectionVisibility(".system-info, .better-question-prompt, .contact-alert", "hide");
-        adaptHelpText("business", "hide");
+        helpText("business", "hide");
         break;
 
       case "other":
         sectionVisibility(".system-info, .better-question-prompt, .contact-alert", "hide");
-        adaptHelpText("other", "hide");
+        helpText("other", "hide");
         break;
     }
   };
